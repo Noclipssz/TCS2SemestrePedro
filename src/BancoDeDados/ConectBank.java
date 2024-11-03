@@ -6,10 +6,10 @@ import javax.swing.JOptionPane;
 
 public class ConectBank {
     // criar variável conexao
-    public Connection connection;
+    public static Connection connection;
 //driver, DRIVER = banco de dados, URL referente ao caminho
 
-    public Connection getConexao() {
+    public static Connection getConexao() {
         final String DRIVER = "com.mysql.cj.jdbc.Driver";
         final String URL = "jdbc:mysql://localhost:3306/carsistem";
         // tenta a conexao, root e root como usuário e senha
@@ -30,7 +30,7 @@ public class ConectBank {
     }
 
     //fechar conexão
-    public void close() {
+    public static void close() {
         try {
             connection.close();
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class ConectBank {
 
     }
 
-    public void closeStatmente(Statement st) {
+    public static void closeStatmente(Statement st) {
         if (st != null) {
             try {
                 st.close();
@@ -49,7 +49,7 @@ public class ConectBank {
         }
     }
 
-    public void closeResult(ResultSet st) {
+    public static void closeResult(ResultSet st) {
         if (st != null) {
             try {
                 st.close();

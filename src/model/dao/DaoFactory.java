@@ -1,9 +1,10 @@
 package model.dao;
 
+import BancoDeDados.ConectBank;
 import model.dao.impl.CarDaoJDBC;
 
 public class DaoFactory {
-    public CarDao createCarDao() {
-        return new CarDaoJDBC();
+    public static CarDao createCarDao() {
+        return new CarDaoJDBC(ConectBank.getConexao());
     }
 }

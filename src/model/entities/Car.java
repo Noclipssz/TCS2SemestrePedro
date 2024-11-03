@@ -12,8 +12,6 @@ public class Car {
     private double price;
 
 
-    ArrayList<Car> carList = new ArrayList<Car>();
-
     public Car() {}
 
     public Car(int id, String make, String model, int year, String color, double mileage, double price) {
@@ -24,6 +22,34 @@ public class Car {
         this.color = color;
         this.mileage = mileage;
         this.price = price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -48,6 +74,19 @@ public class Car {
 
     public double getMileage() {
         return mileage;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", color='" + color + '\'' +
+                ", mileage=" + mileage +
+                ", price=" + price +
+                '}';
     }
 
     public double getPrice() {

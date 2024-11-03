@@ -1,12 +1,13 @@
 package Class;
-
-import BancoDeDados.UpdateBank;
+import model.dao.CarDao;
+import model.dao.DaoFactory;
+import model.entities.Car;
 
 public class Main {
     public static void main(String[] args) {
-        UpdateBank updateBank = new UpdateBank();
-        updateBank.insert("sxsxxssxxsx");
-
+        CarDao car = DaoFactory.createCarDao();
+        Car car1 = car.findById(9);
+        System.out.println(car1);
 
 
     }
