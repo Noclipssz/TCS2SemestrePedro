@@ -1,6 +1,6 @@
 package model.entities;
 
-public class nota {
+public class Nota {
     private int id;
     private int idFranquia;
     private int idCliente;
@@ -9,7 +9,7 @@ public class nota {
     private int dataCompra;
 
 
-    public nota(int id, int idFranquia, int idCliente, int idFuncionario, int idCarro, int dataCompra) {
+    public Nota(int id, int idFranquia, int idCliente, int idFuncionario, int idCarro, int dataCompra) {
         this.id = id;
         this.idFranquia = idFranquia;
         this.idCliente = idCliente;

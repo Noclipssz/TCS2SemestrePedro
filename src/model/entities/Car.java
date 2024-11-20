@@ -1,7 +1,5 @@
 package model.entities;
 
-import java.util.ArrayList;
-
 public class Car {
     private Integer id;
     private String valor;
@@ -10,6 +8,19 @@ public class Car {
     private int ano;
     private String marca;
     private String placa;
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", valor='" + valor + '\'' +
+                ", cor='" + cor + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano=" + ano +
+                ", marca='" + marca + '\'' +
+                ", placa='" + placa + '\'' +
+                '}';
+    }
 
     public Car() {}
 

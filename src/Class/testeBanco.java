@@ -1,16 +1,15 @@
 package Class;
 
 import BancoDeDados.ConectBank;
-import BancoDeDados.InsertBank;
 import model.dao.CarDao;
 import model.dao.DaoFactory;
-import model.dao.impl.CarDaoJDBC;
 import model.entities.Car;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Scanner;
 
 public class testeBanco {
@@ -37,6 +36,10 @@ public class testeBanco {
         carDao.deleteById(NewCar, 1);
         System.out.println("Car adicionado com sucesso!");
         System.out.println(NewCar.getId());
+        List<Car> CarList = carDao.findAll();
+        for (Car car : CarList) {
+            System.out.println(car);
+        }
     }
 
     public void ListarCar   (){
