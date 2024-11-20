@@ -3,93 +3,81 @@ package model.entities;
 import java.util.ArrayList;
 
 public class Car {
-    private int id;
-    private String make;
-    private String model;
-    private int year;
-    private String color;
-    private double mileage;
-    private double price;
-
+    private Integer id;
+    private String valor;
+    private String cor;
+    private String modelo;
+    private int ano;
+    private String marca;
+    private String placa;
 
     public Car() {}
 
-    public Car(int id, String make, String model, int year, String color, double mileage, double price) {
+    public Car(Integer id, String valor, String cor, String modelo, Integer ano, String marca, String placa) {
         this.id = id;
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.color = color;
-        this.mileage = mileage;
-        this.price = price;
+        this.valor = valor;
+        this.cor = cor;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.marca = marca;
+        this.placa = placa;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setMileage(double mileage) {
-        this.mileage = mileage;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public int getAno() {
+        return ano;
     }
 
-    public void setMake(String make) {
-        this.make = make;
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public double getMileage() {
-        return mileage;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                ", color='" + color + '\'' +
-                ", mileage=" + mileage +
-                ", price=" + price +
-                '}';
-    }
-
-    public double getPrice() {
-        return price;
-    }
 }
+
+

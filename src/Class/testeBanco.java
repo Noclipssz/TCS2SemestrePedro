@@ -2,6 +2,11 @@ package Class;
 
 import BancoDeDados.ConectBank;
 import BancoDeDados.InsertBank;
+import model.dao.CarDao;
+import model.dao.DaoFactory;
+import model.dao.impl.CarDaoJDBC;
+import model.entities.Car;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,27 +15,31 @@ import java.util.Scanner;
 
 public class testeBanco {
     public void Ler(){
+        CarDao carDao = DaoFactory.createCarDao();
         Scanner sc = new Scanner(System.in);
-        InsertBank a = new InsertBank();
 
-        System.out.println("Insert make: ");
-        String make = sc.nextLine();
-        System.out.println("Insert model: ");
-        String model = sc.nextLine();
-        System.out.println("Insert year: ");
-        int year = sc.nextInt();
+        System.out.println("Insert valor: ");
+        String valor = sc.nextLine();
+        System.out.println("Insert cor: ");
+        String cor = sc.nextLine();
+        System.out.println("Insert modelo: ");
+        String modelo = sc.nextLine();
+        System.out.println("Insert ano: ");
+        int ano = sc.nextInt();
         sc.nextLine();
-        System.out.println("Insert color: ");
-        String color = sc.nextLine();
-        System.out.println("Insert mileage: ");
-        double mileage = sc.nextDouble();
-        System.out.println("Insert price: ");
-        double price = sc.nextDouble();
+        System.out.println("Insert marca: ");
+        String marca = sc.nextLine();
+        System.out.println("Insert placa: ");
+        String placa = sc.nextLine();
 
-        a.insert(make, model, year, color, mileage, price);
+        Car NewCar = new Car(null, valor,cor, modelo, ano, marca, placa);
+        carDao.inserir(NewCar);
+        carDao.deleteById(NewCar, 1);
+        System.out.println("Car adicionado com sucesso!");
+        System.out.println(NewCar.getId());
     }
 
-    public void ListarCar(){
+    public void ListarCar   (){
         ConectBank db = new ConectBank();
 
         Connection conn;
