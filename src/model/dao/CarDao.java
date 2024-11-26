@@ -8,4 +8,7 @@ public interface CarDao {
     void deleteById(Car car, Integer i);
     Car findById(Integer id);
     List<Car> findAll();
+
+    interface FuncionarioDao {
+    }
 }

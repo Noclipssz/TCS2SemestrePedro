@@ -1,16 +1,15 @@
 package Class;
-import model.dao.CarDao;
-import model.dao.DaoFactory;
-import model.entities.Car;
+import BancoDeDados.ConectBank;
 
-import java.util.List;
+import java.sql.Connection;
 
 public class Main {
     public static void main(String[] args) {
-    testeBanco t = new testeBanco();
-    t.Ler();
-
-
+//        ClienteDao clienteDao = DaoFactory.createClienteDao();
+//        clienteDao.inserir(new Cliente(null,"Kairo", "03904367927","kairo.h.seidler@gmail.com", "88360000", 1,1));
+//        Connection conn = ConectBank.getConexao();
+//        CarTableScreen carTableScreen = new CarTableScreen(conn);
+//        carTableScreen.showTable();
 
     }
 }

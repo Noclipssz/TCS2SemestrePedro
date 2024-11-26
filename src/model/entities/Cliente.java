@@ -4,9 +4,18 @@ public class Cliente {
     private Integer id;
     private String nome;
     private String cpf;
+    private String email;
     private String cep;
-    private int idade;
-    private int dataNascimento;
+    private Integer idade;
+    private Integer dataNascimento;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Cliente() {}
 
@@ -42,7 +51,7 @@ public class Cliente {
         this.cep = cep;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
@@ -50,7 +59,7 @@ public class Cliente {
         this.idade = idade;
     }
 
-    public int getDataNascimento() {
+    public Integer getDataNascimento() {
         return dataNascimento;
     }
 
@@ -58,10 +67,11 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public Cliente(Integer id, String nome, String cpf, String cep, int idade, int dataNascimento) {
+    public Cliente(Integer id, String nome, String cpf,String email ,String cep, Integer idade, Integer dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
+        this.email = email;
         this.cep = cep;
         this.idade = idade;
         this.dataNascimento = dataNascimento;
