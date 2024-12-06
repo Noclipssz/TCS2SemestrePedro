@@ -34,7 +34,7 @@ public class FuncionarioJDBC implements FuncionarioDao {
             stmt.setString(1, funcionario.getNome());
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, funcionario.getEmail());
-            stmt.setString(4, "");
+            stmt.setString(4, funcionario.getCep());
             stmt.setInt(5, funcionario.getIdade());
             stmt.setInt(6, funcionario.getDataNascimento()); // Exemplo de data como inteiro
             stmt.setString(7, funcionario.getCargo());
@@ -82,7 +82,7 @@ public class FuncionarioJDBC implements FuncionarioDao {
 
 
 public Funcionario readFuncionario(int idFuncionario) {
-    String sql = "SELECT * FROM funcionarios WHERE id_funcionario = ?";
+    String sql = "SELECT * FROM funcionario WHERE id_funcionario = ?";
     Funcionario funcionario = null;
 
     try (Connection conn = ConectBank.getConexao();
@@ -108,7 +108,7 @@ public Funcionario readFuncionario(int idFuncionario) {
 }
 
 public void updateFuncionario(Funcionario funcionario) {
-    String sql = "UPDATE funcionarios SET nome = ?, cpf = ?, email = ?, idade = ?, data_nascimento = ?, cargo = ? WHERE id_funcionario = ?";
+    String sql = "UPDATE funcionario SET nome = ?, cpf = ?, email = ?, idade = ?, data_nascimento = ?, cargo = ? WHERE id_funcionario = ?";
     Connection conn = null;
     PreparedStatement stmt = null;
 
@@ -148,7 +148,7 @@ public void updateFuncionario(Funcionario funcionario) {
 }
 
 public void deleteFuncionario(int idFuncionario) {
-    String sql = "DELETE FROM funcionarios WHERE id_funcionario = ?";
+    String sql = "DELETE FROM funcionario WHERE id = ?";
     Connection conn = null;
     PreparedStatement stmt = null;
 
@@ -180,6 +180,33 @@ public void deleteFuncionario(int idFuncionario) {
         }
     }
 }
+    public List<Funcionario> findAll() {
+        String sql = "SELECT * FROM funcionario";
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        try (Connection conn = ConectBank.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Funcionario funcionario = new Funcionario();
+                funcionario.setIdFuncionario(rs.getInt("id"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setCpf(rs.getString("cpf"));
+                funcionario.setEmail(rs.getString("email"));
+                funcionario.setIdade(rs.getInt("idade"));
+                funcionario.setCep(rs.getString("cep"));
+                funcionario.setDataNascimento(rs.getInt("data_nasc"));
+                funcionario.setCargo(rs.getString("cargo"));
+                funcionarios.add(funcionario);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return funcionarios;
+    }
+
 
 
 }

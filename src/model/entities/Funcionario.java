@@ -7,18 +7,28 @@ public class Funcionario {
     private String email;
     private Integer idade;
     private Integer dataNascimento;
+    private String cep;
     private String cargo;
 
     public Funcionario() {}
 
-    public Funcionario(int idFuncionario, String nome, String cpf, String email, Integer idade, Integer dataNascimento, String cargo) {
+    public Funcionario(int idFuncionario, String nome, String cpf, String email, Integer idade, Integer dataNascimento, String cep, String cargo) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.idade = idade;
         this.dataNascimento = dataNascimento;
+        this.cep = cep;
         this.cargo = cargo;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public int getIdFuncionario() {

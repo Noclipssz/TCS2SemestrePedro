@@ -3,11 +3,16 @@ package model.entities;
 public class Franquia {
     private Integer idFranquia;
     private String cep;
-    private String nomeDono;
-    private String gerente;
+    private String Gerente;
     private String numeroFuncionarios;
 
-    public Franquia() {
+    public Franquia() {}
+
+    public Franquia(Integer idFranquia, String cep, String Gerente, String numeroFuncionarios) {
+        this.idFranquia = idFranquia;
+        this.cep = cep;
+        this.Gerente = Gerente;
+        this.numeroFuncionarios = numeroFuncionarios;
     }
 
     public Integer getIdFranquia() {
@@ -26,20 +31,12 @@ public class Franquia {
         this.cep = cep;
     }
 
-    public String getNomeDono() {
-        return nomeDono;
-    }
-
-    public void setNomeDono(String nomeDono) {
-        this.nomeDono = nomeDono;
-    }
-
     public String getGerente() {
-        return gerente;
+        return Gerente;
     }
 
-    public void setGerente(String gerente) {
-        this.gerente = gerente;
+    public void setGerente(String nomeDono) {
+        this.Gerente = nomeDono;
     }
 
     public String getNumeroFuncionarios() {
@@ -47,14 +44,6 @@ public class Franquia {
     }
 
     public void setNumeroFuncionarios(String numeroFuncionarios) {
-        this.numeroFuncionarios = numeroFuncionarios;
-    }
-
-    public Franquia(Integer idFranquia, String cep, String nomeDono, String gerente, String numeroFuncionarios) {
-        this.idFranquia = idFranquia;
-        this.cep = cep;
-        this.nomeDono = nomeDono;
-        this.gerente = gerente;
         this.numeroFuncionarios = numeroFuncionarios;
     }
 }

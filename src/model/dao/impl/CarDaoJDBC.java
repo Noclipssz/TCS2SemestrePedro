@@ -69,7 +69,7 @@ public class CarDaoJDBC implements CarDao {
     }
 
     @Override
-    public void deleteById(Car car, Integer id) {
+    public void deleteById(Integer id) {
         String sql = "DELETE FROM carro WHERE id = ?";
         try {
             conn.setAutoCommit(false); // Inicia transação
@@ -105,19 +105,19 @@ public class CarDaoJDBC implements CarDao {
     }
 
     @Override
-    public List<Car> findAll() {
-        List<Car> cars = new ArrayList<>();
-        String sql = "SELECT * FROM carro";
-        try (PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                cars.add(instanciarCar(rs));
+        public List<Car> findAll() {
+            List<Car> cars = new ArrayList<>();
+            String sql = "SELECT * FROM carro";
+            try (PreparedStatement ps = conn.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    cars.add(instanciarCar(rs));
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException("Erro ao buscar todos os carros: " + e.getMessage(), e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar todos os carros: " + e.getMessage(), e);
+            return cars;
         }
-        return cars;
-    }
 
     private Car instanciarCar(ResultSet rs) throws SQLException {
         Car car = new Car();

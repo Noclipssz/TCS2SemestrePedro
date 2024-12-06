@@ -19,18 +19,17 @@ public class FranquiaDaoJDBC implements FranquiaDao {
 
     @Override
     public void inserir(Franquia franquia) {
-        String sql = "INSERT INTO franquia (cep, nome_dono, gerente, numero_funcionarios) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO franquia (cep, gerente, numero_de_funcionarios) VALUES (?, ?, ?)";
         try {
             conn.setAutoCommit(false); // Inicia transação
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, franquia.getCep());
-                ps.setString(2, franquia.getNomeDono());
-                ps.setString(3, franquia.getGerente());
-                ps.setString(4, franquia.getNumeroFuncionarios());
+                ps.setString(2, franquia.getGerente());
+                ps.setString(3, franquia.getNumeroFuncionarios());
                 ps.executeUpdate();
-                conn.commit(); // Confirma transação
+                conn.commit();
             } catch (SQLException e) {
-                conn.rollback(); // Reverte transação em caso de erro
+                conn.rollback();
                 throw new RuntimeException("Erro ao inserir franquia: " + e.getMessage(), e);
             }
         } catch (SQLException e) {
@@ -47,7 +46,7 @@ public class FranquiaDaoJDBC implements FranquiaDao {
             conn.setAutoCommit(false); // Inicia transação
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, franquia.getCep());
-                ps.setString(2, franquia.getNomeDono());
+                ps.setString(2, franquia.getGerente());
                 ps.setString(3, franquia.getGerente());
                 ps.setString(4, franquia.getNumeroFuncionarios());
                 ps.setInt(5, franquia.getIdFranquia());
@@ -66,7 +65,7 @@ public class FranquiaDaoJDBC implements FranquiaDao {
 
     @Override
     public void deleteById(Integer id) {
-        String sql = "DELETE FROM franquia WHERE id_franquia = ?";
+        String sql = "DELETE FROM franquia WHERE id = ?";
         try {
             conn.setAutoCommit(false); // Inicia transação
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -117,12 +116,10 @@ public class FranquiaDaoJDBC implements FranquiaDao {
 
     private Franquia instanciarFranquia(ResultSet rs) throws SQLException {
         Franquia franquia = new Franquia();
-        franquia.setIdFranquia(rs.getInt("id_franquia"));
+        franquia.setIdFranquia(rs.getInt("id"));
         franquia.setCep(rs.getString("cep"));
-
-        franquia.setNomeDono(rs.getString("nome_dono"));
         franquia.setGerente(rs.getString("gerente"));
-        franquia.setNumeroFuncionarios(rs.getString("numero_funcionarios"));
+        franquia.setNumeroFuncionarios(rs.getString("numero_de_funcionarios"));
         return franquia;
     }
 
